@@ -41,6 +41,28 @@ function buildCustomFields(payload, map) {
     .filter(Boolean);
 }
 
+async function readJsonSafe(res) {
+  const text = await res.text();
+  if (!text) return { text: '', json: null };
+  try {
+    return { text, json: JSON.parse(text) };
+  } catch {
+    return { text, json: { raw: text } };
+  }
+}
+
+function isDuplicateContactError(details) {
+  if (!details || typeof details !== 'object') return false;
+  const message = typeof details.message === 'string' ? details.message : '';
+  const meta = details.meta && typeof details.meta === 'object' ? details.meta : null;
+  return (
+    message.toLowerCase().includes('does not allow duplicated contacts') &&
+    meta &&
+    typeof meta.contactId === 'string' &&
+    meta.contactId.length > 0
+  );
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -65,6 +87,17 @@ export default async function handler(req, res) {
       });
     }
 
+    const contactBody = {
+      locationId,
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      email: payload.email,
+      phone: payload.phone,
+      source: 'Legacy Solutions Website',
+      tags,
+      customFields: buildCustomFields(payload, customFieldMap),
+    };
+
     const ghlRes = await fetch(`${baseUrl.replace(/\/$/, '')}/contacts/`, {
       method: 'POST',
       headers: {
@@ -73,29 +106,54 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify({
-        locationId,
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        email: payload.email,
-        phone: payload.phone,
-        source: 'Legacy Solutions Website',
-        tags,
-        customFields: buildCustomFields(payload, customFieldMap),
-      }),
+      body: JSON.stringify(contactBody),
     });
 
-    const responseText = await ghlRes.text();
-    let responseJson = null;
-    if (responseText) {
-      try {
-        responseJson = JSON.parse(responseText);
-      } catch {
-        responseJson = { raw: responseText };
-      }
-    }
+    const { json: responseJson } = await readJsonSafe(ghlRes);
 
     if (!ghlRes.ok) {
+      // If the location blocks duplicates, GHL returns 400 + a meta.contactId.
+      // In that case, treat the submission as an upsert and update the existing contact.
+      if (ghlRes.status === 400 && isDuplicateContactError(responseJson)) {
+        const existingId = responseJson.meta.contactId;
+        // Update endpoint does not require locationId; avoid sending it to reduce validation issues.
+        const updateBody = {
+          firstName: payload.firstName,
+          lastName: payload.lastName,
+          email: payload.email,
+          phone: payload.phone,
+          source: 'Legacy Solutions Website',
+          tags,
+          customFields: buildCustomFields(payload, customFieldMap),
+        };
+
+        const updRes = await fetch(`${baseUrl.replace(/\/$/, '')}/contacts/${existingId}`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Version: '2021-07-28',
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(updateBody),
+        });
+
+        const { json: updJson } = await readJsonSafe(updRes);
+        if (!updRes.ok) {
+          return res.status(updRes.status).json({
+            error: 'GoHighLevel update failed',
+            details: updJson,
+          });
+        }
+
+        return res.status(200).json({
+          ok: true,
+          upserted: true,
+          contactId: existingId,
+          data: updJson,
+        });
+      }
+
       return res.status(ghlRes.status).json({
         error: 'GoHighLevel submission failed',
         details: responseJson,
