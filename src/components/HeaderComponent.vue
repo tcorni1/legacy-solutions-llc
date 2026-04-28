@@ -24,8 +24,8 @@
             <!-- Contact Text and Phone Number -->
             <div>
               <p class="text-[12px] leading-[22px] md:text-sm text-[#00274d] mt-2">Have Any Questions</p>
-              <a href="tel:504-638-9090" class="font-outfit text-[15px] leading-[26px] md:text-2xl font-bold transition-colors hover:opacity-80" style="color: #00274D;">
-                504-638-9090
+              <a href="tel:8336283857" class="font-outfit text-[15px] leading-[26px] md:text-2xl font-bold transition-colors hover:opacity-80" style="color: #00274D;">
+                833-628-3857
               </a>
             </div>
           </div>
