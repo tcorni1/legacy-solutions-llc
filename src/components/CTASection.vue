@@ -458,6 +458,7 @@ export default defineComponent({
       website: '',
       howCanWeWorkTogether: '',
       authorization: false,
+      smsConsent: false,
     });
 
     const onSubmit = async () => {
