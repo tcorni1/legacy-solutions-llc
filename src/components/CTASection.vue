@@ -350,7 +350,7 @@
                 class="mt-1 h-4 w-4 rounded border-gray-300 text-[#FF9900] focus:ring-[#FF9900]"
               />
               <label for="cta_authorization" class="text-xs md:text-sm text-gray-700">
-                I authorize Legacy Solutions LLC to review my eligibility for available funds and contact me regarding my claim.
+                I authorize Legacy Solutions LLC to review my eligibility for available funds and contact me regarding my claim. I agree to receive SMS text messages related to my inquiry. Message frequency varies. Message and data rates may apply. Reply STOP to opt out.
               </label>
             </div>
 
