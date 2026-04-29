@@ -340,19 +340,40 @@
             </div>
 
             <!-- Authorization Checkbox -->
-            <div class="flex items-start space-x-3">
-              <input
-                id="cta_authorization"
-                type="checkbox"
-                name="authorization"
-                required
-                v-model="form.authorization"
-                class="mt-1 h-4 w-4 rounded border-gray-300 text-[#FF9900] focus:ring-[#FF9900]"
-              />
-              <label for="cta_authorization" class="text-xs md:text-sm text-gray-700">
-                I authorize Legacy Solutions LLC to review my eligibility for available funds and contact me regarding my claim. I agree to receive SMS text messages related to my inquiry. Message frequency varies. Message and data rates may apply. Reply STOP to opt out.
-              </label>
-            </div>
+           <!-- Authorization Checkbox -->
+<div class="flex items-start space-x-3">
+  <input
+    id="cta_authorization"
+    type="checkbox"
+    name="authorization"
+    required
+    v-model="form.authorization"
+    class="mt-1 h-4 w-4 rounded border-gray-300 text-[#FF9900] focus:ring-[#FF9900]"
+  />
+  <label for="cta_authorization" class="text-xs md:text-sm text-gray-700">
+    I authorize Legacy Solutions LLC to review my eligibility for available funds and contact me regarding my claim.
+  </label>
+</div>
+
+<!-- SMS Consent Checkbox -->
+<div class="flex items-start space-x-3">
+  <input
+    id="cta_sms_consent"
+    type="checkbox"
+    name="sms_consent"
+    required
+    v-model="form.smsConsent"
+    class="mt-1 h-4 w-4 rounded border-gray-300 text-[#FF9900] focus:ring-[#FF9900]"
+  />
+  <label for="cta_sms_consent" class="text-xs md:text-sm text-gray-700">
+    I agree to receive SMS text messages from Legacy Solutions LLC. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase.
+  </label>
+</div>
+
+<p class="text-xs text-gray-500">
+  By submitting this form, you agree to our 
+  <a href="/privacy-policy" class="underline">Privacy Policy</a>.
+</p>
 
             <!-- Next Step Notice -->
             <div class="border-l-6 border-[#FF9900] bg-[#FFF5E6] px-4 py-[14px] text-xs md:text-sm text-gray-800 rounded-md">
