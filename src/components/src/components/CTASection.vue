@@ -4,22 +4,22 @@
       <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between flex-wrap">
         <div class="basis-full lg:basis-[50%] p-[10px] flex flex-col gap-5">
           <h2
-            class="fadeInUp font-outfit text-[28px] md:text-4xl font-extrabold uppercase leading-[40px] text-center md:text-left"
+            class="font-outfit text-[28px] md:text-4xl font-extrabold uppercase leading-[40px] text-center md:text-left"
             style="color: #00274D;"
           >
             START YOUR CLAIM - QUICK, SECURE, AND FREE
           </h2>
 
-          <p class="fadeInUp text-[16px] mb-[18px] text-gray-700 leading-relaxed">
+          <p class="text-[16px] mb-[18px] text-gray-700 leading-relaxed">
             Whether your funds are connected to Louisiana or another state,
             Legacy Solutions LLC makes it easy to recover what's rightfully yours.
           </p>
 
-          <p class="fadeInUp text-[16px] mb-[18px] text-gray-700 leading-relaxed">
+          <p class="text-[16px] mb-[18px] text-gray-700 leading-relaxed">
             Serving all 64 Louisiana parishes and clients nationwide.
           </p>
 
-          <div class="fadeInUp md:flex md:justify-center lg:justify-start">
+          <div class="md:flex md:justify-center lg:justify-start">
             <img
               src="/images/contact-section/CONTACT-FORM-SECTION-2.png"
               alt="Contact form illustration"
@@ -28,10 +28,10 @@
           </div>
         </div>
 
-        <div class="fadeInUp2s bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px]">
+        <div class="bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px]">
           <iframe
             src="https://api.leadconnectorhq.com/widget/form/cengkrYrQoPVSoTyKhLf"
-            style="width: 100%; height: 700px; border: none; border-radius: 8px;"
+            style="width: 100%; height: 750px; border: none; border-radius: 8px;"
             id="inline-cengkrYrQoPVSoTyKhLf"
             data-layout='{"id":"INLINE"}'
             data-trigger-type="alwaysShow"
@@ -61,29 +61,3 @@ onMounted(() => {
   }
 });
 </script>
-
-<style scoped>
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.fadeInUp {
-  opacity: 0;
-}
-
-.animate.fadeInUp {
-  animation: fadeInUp 1.2s ease forwards;
-}
-
-.animate.fadeInUp2s {
-  animation: fadeInUp 2s ease forwards;
-}
-</style>
