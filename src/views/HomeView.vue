@@ -9,7 +9,7 @@
     <FAQSection />
     <YourMoneyWaitingSection @scrollToCTA="scrollToCTA" />
     <StartRecoverySection />
-    <CTASection />
+  
   </div>
 </template>
 
@@ -24,7 +24,7 @@ import YourMoneyWaitingSection from '@/components/YourMoneyWaitingSection.vue';
 import StartRecoverySection from '@/components/StartRecoverySection.vue';
 import WhyPeopleChooseSection from '@/components/WhyPeopleChooseSection.vue';
 import FAQSection from '@/components/FAQSection.vue';
-import CTASection from '@/components/CTASection.vue';
+
 
 export default defineComponent({
   name: 'HomeView',
@@ -38,7 +38,7 @@ export default defineComponent({
     StartRecoverySection,
     WhyPeopleChooseSection,
     FAQSection,
-    CTASection,
+    
   },
   methods: {
     scrollToCTA() {
