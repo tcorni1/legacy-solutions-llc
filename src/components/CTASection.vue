@@ -408,78 +408,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref } from 'vue';
-import { upsertGhlContact } from '@/services/gohighlevel';
+import { defineComponent, onMounted } from 'vue';
 
 export default defineComponent({
   name: 'CTASection',
+
   setup() {
-    const submitting = ref(false);
-    const submitError = ref<string | null>(null);
-    const submitSuccess = ref(false);
-
-    const form = reactive({
-      firstName: '',
-      lastName: '',
-      email: '',
-      confirmEmail: '',
-      phone: '',
-      otherClaimants: '',
-      parishOrCounty: '',
-      preferredContactMethod: '',
-      fundsState: 'Louisiana',
-      approxClaimAmount: '',
-      fundType: '',
-      fundsDescription: '',
-      referralSource: 'Friend or Family',
-      contactingAs: '',
-      companyName: '',
-      website: '',
-      howCanWeWorkTogether: '',
-      authorization: false,
-      smsConsent: false,
-    });
-
-    const onSubmit = async () => {
-      submitError.value = null;
-      submitSuccess.value = false;
-
-      if (form.confirmEmail && form.confirmEmail !== form.email) {
-        submitError.value = 'Please make sure your email and confirm email match.';
-        return;
-      }
-
-      submitting.value = true;
-      try {
-        await upsertGhlContact({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          email: form.email,
-          phone: form.phone,
-          otherClaimants: form.otherClaimants,
-          parishOrCounty: form.parishOrCounty,
-          preferredContactMethod: form.preferredContactMethod,
-          fundsState: form.fundsState,
-          approxClaimAmount: form.approxClaimAmount,
-          fundType: form.fundType,
-          fundsDescription: form.fundsDescription,
-          referralSource: form.referralSource,
-          contactingAs: form.contactingAs,
-          companyName: form.companyName,
-          website: form.website,
-          howCanWeWorkTogether: form.howCanWeWorkTogether,
-          authorization: form.authorization,
-        });
-
-        submitSuccess.value = true;
-      } catch (e) {
-        submitError.value = e instanceof Error ? e.message : 'Something went wrong submitting the form.';
-      } finally {
-        submitting.value = false;
-      }
-    };
 
     onMounted(() => {
+      const script = document.createElement('script');
+      script.src = 'https://link.msgsndr.com/js/form_embed.js';
+      script.async = true;
+      document.body.appendChild(script);
+
       const elements = document.querySelectorAll('.fadeInUp, .fadeInUp2s');
 
       const observer = new IntersectionObserver(
@@ -487,25 +428,19 @@ export default defineComponent({
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('animate');
-              observer.unobserve(entry.target); // run once per element
+              observer.unobserve(entry.target);
             }
           });
         },
         {
-          threshold: 0.1, // triggers as soon as element starts entering
+          threshold: 0.1,
         }
       );
 
       elements.forEach((el) => observer.observe(el));
     });
 
-    return {
-      form,
-      submitting,
-      submitError,
-      submitSuccess,
-      onSubmit,
-    };
+    return {};
   },
 });
 </script>
