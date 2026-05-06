@@ -9,7 +9,6 @@
     <FAQSection />
     <YourMoneyWaitingSection @scrollToCTA="scrollToCTA" />
     <StartRecoverySection />
-  
   </div>
 </template>
 
@@ -25,7 +24,6 @@ import StartRecoverySection from '@/components/StartRecoverySection.vue';
 import WhyPeopleChooseSection from '@/components/WhyPeopleChooseSection.vue';
 import FAQSection from '@/components/FAQSection.vue';
 
-
 export default defineComponent({
   name: 'HomeView',
   components: {
@@ -38,14 +36,13 @@ export default defineComponent({
     StartRecoverySection,
     WhyPeopleChooseSection,
     FAQSection,
-    
   },
   methods: {
     scrollToCTA() {
-      const section = document.getElementById('cta-section');
+      const section = document.getElementById('ghl-form-section');
 
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     },
   },
