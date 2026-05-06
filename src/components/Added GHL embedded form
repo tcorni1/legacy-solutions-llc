@@ -2,48 +2,53 @@
   <section id="cta-section" class="bg-gray-50 py-8 md:py-[60px] px-[10px] md:px-0">
     <div class="container max-w-7xl mx-auto">
       <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between flex-wrap">
-        <!-- Left Column: Text Content -->
+
+        <!-- Left Column -->
         <div class="basis-full lg:basis-[50%] p-[10px] flex flex-col gap-5">
-          <h2 class="fadeInUp font-outfit text-[28px] md:text-4xl font-extrabold uppercase leading-[40px] text-center md:text-left" style="color: #00274D;">
+
+          <h2
+            class="fadeInUp font-outfit text-[28px] md:text-4xl font-extrabold uppercase leading-[40px] text-center md:text-left"
+            style="color: #00274D;"
+          >
             START YOUR CLAIM – QUICK, SECURE, AND FREE
           </h2>
+
           <p class="fadeInUp text-[16px] mb-[18px] text-gray-700 leading-relaxed">
-            Whether your funds are connected to Louisiana or another state, Legacy Solutions LLC makes it easy to recover what’s rightfully yours. There are no upfront costs, and your information remains private. Complete the brief form below to verify eligibility and start your recovery process.
+            Whether your funds are connected to Louisiana or another state,
+            Legacy Solutions LLC makes it easy to recover what’s rightfully yours.
           </p>
+
           <p class="fadeInUp text-[16px] mb-[18px] text-gray-700 leading-relaxed">
-            Serving all 64 Louisiana parishes and clients nationwide. Even if you’re unsure where your funds are located, our team can assist you from start to finish.
+            Serving all 64 Louisiana parishes and clients nationwide.
           </p>
+
           <div class="fadeInUp md:flex md:justify-center lg:justify-start">
-            <img 
-              src="/images/contact-section/CONTACT-FORM-SECTION-2.png" 
+            <img
+              src="/images/contact-section/CONTACT-FORM-SECTION-2.png"
               alt="Contact form illustration"
               class="max-w-[85%]"
             />
           </div>
+
         </div>
-<!-- Right Column: GHL Embedded Form -->
-<div class="fadeInUp2s bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px]">
 
-  <iframe
-    src="https://api.leadconnectorhq.com/widget/form/cengkrYrQoPVSoTyKhLf"
-    style="width:100%;height:700px;border:none;border-radius:8px"
-    id="inline-cengkrYrQoPVSoTyKhLf"
-    data-layout="{'id':'INLINE'}"
-    data-trigger-type="alwaysShow"
-    data-trigger-value=""
-    data-activation-type="alwaysActivated"
-    data-activation-value=""
-    data-deactivation-type="neverDeactivate"
-    data-deactivation-value=""
-    data-form-name="Form 2"
-    data-height="2287"
-    data-layout-iframe-id="inline-cengkrYrQoPVSoTyKhLf"
-    data-form-id="cengkrYrQoPVSoTyKhLf"
-    title="Form 2"
-  >
-  </iframe>
+        <!-- Right Column -->
+        <div class="fadeInUp2s bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px]">
 
-</div>
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/cengkrYrQoPVSoTyKhLf"
+            style="width:100%;height:700px;border:none;border-radius:8px"
+            id="inline-cengkrYrQoPVSoTyKhLf"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-form-name="Form 2"
+            data-height="2287"
+            data-form-id="cengkrYrQoPVSoTyKhLf"
+            title="Form 2"
+          >
+          </iframe>
+
+        </div>
 
       </div>
     </div>
@@ -63,49 +68,34 @@ export default defineComponent({
       script.src = 'https://link.msgsndr.com/js/form_embed.js';
       script.async = true;
       document.body.appendChild(script);
-
-      const elements = document.querySelectorAll('.fadeInUp, .fadeInUp2s');
-
-      const observer = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-        }
-      );
-
-      elements.forEach((el) => observer.observe(el));
     });
 
     return {};
   },
 });
 </script>
+
 <style scoped>
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translate3d(0, 100%, 0);
   }
+
   100% {
     opacity: 1;
     transform: none;
   }
 }
-/* Hidden initially */
+
 .fadeInUp {
   opacity: 0;
 }
-/* Animate only when .animate is added */
+
 .animate.fadeInUp {
   animation: fadeInUp 1.2s ease forwards;
 }
+
 .animate.fadeInUp2s {
   animation: fadeInUp 2s ease forwards;
 }
