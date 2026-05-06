@@ -1,15 +1,14 @@
 <template>
   <div class="home">
-    <HeroSection @scrollToCTA="scrollToCTA"/>
+    <HeroSection @scrollToCTA="scrollToCTA" />
     <UnclaimedFundsSection />
-    <WhyPeopleChooseSection @scrollToCTA="scrollToCTA"/>
+    <WhyPeopleChooseSection @scrollToCTA="scrollToCTA" />
     <MoneyWaitingSection />
     <RecoveryProcessSection />
     <WhyChooseSection />
     <FAQSection />
-    <YourMoneyWaitingSection @scrollToCTA="scrollToCTA"/>
+    <YourMoneyWaitingSection @scrollToCTA="scrollToCTA" />
     <StartRecoverySection />
-    <CTASection />
     <!-- <LogoSliderSection /> -->
   </div>
 </template>
@@ -25,7 +24,6 @@ import YourMoneyWaitingSection from '@/components/YourMoneyWaitingSection.vue';
 import StartRecoverySection from '@/components/StartRecoverySection.vue';
 import WhyPeopleChooseSection from '@/components/WhyPeopleChooseSection.vue';
 import FAQSection from '@/components/FAQSection.vue';
-import CTASection from '@/components/CTASection.vue';
 // import LogoSliderSection from '@/components/LogoSliderSection.vue';
 
 export default defineComponent({
@@ -40,7 +38,6 @@ export default defineComponent({
     StartRecoverySection,
     WhyPeopleChooseSection,
     FAQSection,
-    CTASection,
     // LogoSliderSection
   },
   methods: {
