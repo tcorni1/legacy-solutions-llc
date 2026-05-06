@@ -1,99 +1,66 @@
 <template>
-  <section ref="sectionRef" class="bg-white py-8 md:py-[60px] px-[10px] md:px-0">
+  <section id="cta-section" class="bg-white py-8 md:py-[60px] px-[10px] md:px-0">
     <div class="container max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:justify-between flex-wrap">
-        <!-- Left Column: Text Content -->
-        <div class="basis-[59.214%] p-[10px] flex flex-col gap-5">
-          <h2 class="fadeInUp font-outfit text-[28px] leading-[40px] md:text-4xl font-extrabold uppercase text-center md:text-left" style="color: #00274D;">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between flex-wrap">
+        <div class="basis-full lg:basis-[50%] p-[10px] flex flex-col gap-5">
+          <h2
+            class="font-outfit text-[28px] leading-[40px] md:text-4xl font-extrabold uppercase text-center md:text-left"
+            style="color: #00274D;"
+          >
             START YOUR RECOVERY TODAY
           </h2>
 
-          <p class="fadeInUp text-[16px] mb-[18px] text-gray-700 leading-relaxed">
-            You've seen what's possible—recoveries of $16,000, $32,000, $58,000, even $78,000 from property settlements, insurance payouts, 401(k)s, inheritances, and other forgotten assets.
+          <p class="text-[16px] mb-[18px] text-gray-700 leading-relaxed">
+            You've seen what's possible - recoveries of $16,000, $32,000, $58,000, even $78,000 from property settlements, insurance payouts, 401(k)s, inheritances, and other forgotten assets.
           </p>
 
-          <p class="fadeInUp text-[16px] mb-[18px] text-gray-700 leading-relaxed">
-            The process is quick, secure, and designed to save you time. Once you complete the short form below, our verification team reviews your information to confirm eligibility. If additional details are needed, you'll receive a message by text, email, or phone. Once verified, your recovery moves forward automatically under the authority of your signed agreement.
+          <p class="text-[16px] mb-[18px] text-gray-700 leading-relaxed">
+            The process is quick, secure, and designed to save you time. Once you complete the short form, our verification team reviews your information to confirm eligibility. If additional details are needed, you'll receive a message by text, email, or phone.
           </p>
 
-          <p class="fadeInUp text-[16px] mb-[18px] text-gray-700 leading-relaxed">
-            There's no risk and no upfront payment required. Legacy Solutions LLC is committed to making the process as effortless as possible. Whether you're located in one of Louisiana's 64 parishes or anywhere in the U.S., our team ensures your claim is handled efficiently and professionally.
+          <p class="text-[16px] mb-[18px] text-gray-700 leading-relaxed">
+            There's no risk and no upfront payment required. Whether you're located in one of Louisiana's 64 parishes or anywhere in the U.S., our team ensures your claim is handled efficiently and professionally.
           </p>
+
+          <div class="md:flex md:justify-center lg:justify-start">
+            <img
+              src="/images/Start-recovery-section/UNCLAIMED-FUNDS-COULD-BE-WAITING-1-1-1.png"
+              alt="People shaking hands"
+              class="w-full max-w-md h-auto object-contain rounded-lg"
+            />
+          </div>
         </div>
 
-        <!-- Right Column: Image -->
-        <div class="fadeInRight basis-[40%] p-[10px]">
-          <img 
-            src="/images/Start-recovery-section/UNCLAIMED-FUNDS-COULD-BE-WAITING-1-1-1.png" 
-            alt="People shaking hands"
-            class="w-full max-w-md h-auto object-contain rounded-lg"
-          />
+        <div class="bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px]">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/cengkrYrQoPVSoTyKhLf"
+            style="width: 100%; height: 750px; border: none; border-radius: 8px;"
+            id="inline-cengkrYrQoPVSoTyKhLf"
+            data-layout='{"id":"INLINE"}'
+            data-trigger-type="alwaysShow"
+            data-form-name="Form 2"
+            data-height="2287"
+            data-form-id="cengkrYrQoPVSoTyKhLf"
+            title="Form 2"
+          ></iframe>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+<script setup lang="ts">
+import { onMounted } from 'vue';
 
-export default defineComponent({
-  name: 'StartRecoverySection',
-  setup() {
-    onMounted(() => {
-      const elements = document.querySelectorAll('.fadeInUp, .fadeInRight');
+onMounted(() => {
+  const existingScript = document.getElementById('ghl-form-embed-script');
 
-      const observer = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate');
-              observer.unobserve(entry.target); // run once per element
-            }
-          });
-        },
-        {
-          threshold: 0.1, // triggers as soon as element starts entering
-        }
-      );
-
-      elements.forEach((el) => observer.observe(el));
-    });
-  },
+  if (!existingScript) {
+    const script = document.createElement('script');
+    script.id = 'ghl-form-embed-script';
+    script.src = 'https://link.msgsndr.com/js/form_embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }
 });
 </script>
-<style scoped>
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-/* Hidden initially */
-.fadeInUp,
-.fadeInRight {
-  opacity: 0;
-}
-/* Animate only when .animate is added */
-.animate.fadeInUp {
-  animation: fadeInUp 1.2s ease forwards;
-}
-
-.animate.fadeInRight {
-  animation: fadeInRight 1.2s ease forwards;
-}
-</style>
