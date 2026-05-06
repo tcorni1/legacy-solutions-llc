@@ -33,11 +33,11 @@
 
         <div
           id="ghl-form-section"
-          class="bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px] scroll-mt-24"
+          class="bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px] scroll-mt-8"
         >
           <iframe
             src="https://api.leadconnectorhq.com/widget/form/cengkrYrQoPVSoTyKhLf"
-            style="width: 100%; height: 2217px; border: none; border-radius: 8px;"
+            style="width: 100%; height: 2241px; border: none; border-radius: 8px;"
             id="inline-cengkrYrQoPVSoTyKhLf"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"
@@ -47,7 +47,7 @@
             data-deactivation-type="neverDeactivate"
             data-deactivation-value=""
             data-form-name="Form 2"
-            data-height="2217"
+            data-height="2241"
             data-layout-iframe-id="inline-cengkrYrQoPVSoTyKhLf"
             data-form-id="cengkrYrQoPVSoTyKhLf"
             title="Form 2"
