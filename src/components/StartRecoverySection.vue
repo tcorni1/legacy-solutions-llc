@@ -31,15 +31,24 @@
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px]">
+        <div
+          id="ghl-form-section"
+          class="bg-white rounded-2xl shadow-sm basis-full lg:basis-[50%] p-[10px] scroll-mt-24"
+        >
           <iframe
             src="https://api.leadconnectorhq.com/widget/form/cengkrYrQoPVSoTyKhLf"
-            style="width: 100%; height: 750px; border: none; border-radius: 8px;"
+            style="width: 100%; height: 2217px; border: none; border-radius: 8px;"
             id="inline-cengkrYrQoPVSoTyKhLf"
-            data-layout='{"id":"INLINE"}'
+            data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
             data-form-name="Form 2"
-            data-height="2287"
+            data-height="2217"
+            data-layout-iframe-id="inline-cengkrYrQoPVSoTyKhLf"
             data-form-id="cengkrYrQoPVSoTyKhLf"
             title="Form 2"
           ></iframe>
